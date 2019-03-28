@@ -46,10 +46,9 @@ void insertnode(bstnode **root,int data)
                 temp=NULL;
             }
             
-        }
-    }
-    
-}
+        }//end of while
+    }//end of else    
+}//end of function
 
 void inorder(bstnode* root)
 {
@@ -66,6 +65,7 @@ void find(bstnode* root,int data)                               //function to fi
     if(root==NULL)
     {
         cout<<"Element not found!!\n";
+        return;
     }
     if(root->data>data)
     {
