@@ -63,6 +63,10 @@ struct node* rightrotation(node* root)
     extranode->right=root;
     root->left=garbage;
 
+    //updating height of root and extranode
+    root->height=1+(max(getheight(root->left),getheight(root->right)));
+    extranode->height=1+(max(getheight(extranode->left),getheight(extranode->right)));
+    
     //returning new node
     return extranode;
 }
@@ -76,6 +80,10 @@ struct node* leftrotation(node* root)
     //rotation occurs
     extranode->left=root;
     root->right=garbage;
+
+    //updating height of root and extranode
+    root->height=1+(max(getheight(root->left),getheight(root->right)));
+    extranode->height=1+(max(getheight(extranode->left),getheight(extranode->right)));
 
     //returning new node
     return extranode;
