@@ -3,8 +3,9 @@
 
 //This is the code to find the sum of all elements greater than kth largest element
 
-												/* THE MAIN IDEA OF THIS CODE*/
-/*We will go to the right end node of the tree as this will give us the maximum value of that tree
+				/* THE MAIN IDEA OF THIS CODE*/
+/*
+We will go to the right end node of the tree as this will give us the maximum value of that tree
 then traverse the 2nd largest element and so on and then we will update the sum to that number then
 we also increase the value of extra variable as we will add these numbers till which the user tells
 us to calculate the sum.
