@@ -195,37 +195,35 @@ node *deletenode(node *root, int data)
         }
     } //end of else
 
-    if (root != NULL)       //This is to update AVL tree when its condition is violated
+    if (root != NULL) //This is to update AVL tree when its condition is violated
     {
-        if (root != NULL)
+
+        root->height = 1 + max(getheight(root->left), getheight(root->right));
+
+        int balance;
+        balance = balancefactor(root);
+
+        //LL rotation case
+        if (balance > 1 && data < root->left->data)
         {
-            root->height = 1 + max(getheight(root->left), getheight(root->right));
-
-            int balance;
-            balance = balancefactor(root);
-
-            //LL rotation case
-            if (balance > 1 && data < root->left->data)
-            {
-                return rightrotation(root);
-            }
-            //RR rotation case
-            else if (balance < -1 && data > root->right->data)
-            {
-                return leftrotation(root);
-            }
-            //LR rotation case
-            else if (balance > 1 && data > root->left->data)
-            {
-                root->left = leftrotation(root->left);
-                return rightrotation(root);
-            }
-            //RL rotation case
-            else if (balance < -1 && data < root->right->data)
-            {
-                root->right = rightrotation(root->right);
-                return leftrotation(root);
-            }
+            return rightrotation(root);
+        }
+        //RR rotation case
+        else if (balance < -1 && data > root->right->data)
+        {
+            return leftrotation(root);
+        }
+        //LR rotation case
+        else if (balance > 1 && data > root->left->data)
+        {
+            root->left = leftrotation(root->left);
+            return rightrotation(root);
+        }
+        //RL rotation case
+        else if (balance < -1 && data < root->right->data)
+        {
+            root->right = rightrotation(root->right);
+            return leftrotation(root);
         }
     }
     return root;
@@ -255,6 +253,10 @@ int main()
         scanf("%d", &data);
         root = insertnode(root, data);
     }
+
+    printf("Now inorder arrangement of this AVL search tree is:");
+    inorder(root);
+    printf("\n");
 
     cout << "Enter the element you want to delete from this AVL Tree:";
     cin >> data;
