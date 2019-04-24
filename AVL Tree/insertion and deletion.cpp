@@ -1,5 +1,5 @@
 /**
-    *Code to delete the node from AVL Tree
+    **Code to insert and delete the node from AVL Tree
 */
 
 #include <bits/stdc++.h>
