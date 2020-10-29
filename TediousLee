@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace   std;
+#define boost     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+#define ll        long long 
+#define ld        long double
+#define mkp       make_pair
+#define pb     	  push_back	
+#define pf     	  push_front
+#define ff	  	  first
+#define ss	  	  second
+#define pii       pair<int,int>
+#define pob       pop_back
+#define pof       pop_front
+#define mxy 	  map<pair<ll, ll>, ll>  
+#define q1        1000000007
+#define bin1      __builtin_popcount 
+#define map2d	  map<long long,map<long long , long long > >
+#define um		  unordered_map<ll,ll>
+#define INF       0x3f3f3f3f
+#define all(x)    (x).begin(), (x).end()
+#define N 2000005
+int main()
+{
+	vector<ll>dp(N,0);
+	dp[3]=1;
+	dp[4]=1;
+	for(ll i=5;i<N;i++)
+	{
+		if(i%3!=0)
+			dp[i]=(dp[i-1]+(2*dp[i-2])%q1)%q1;
+		else
+			dp[i]=(dp[i-1]+((2*dp[i-2])%q1)+1)%q1;
+	}
+	ll t;                  
+	cin>>t;
+	while(t--)
+	{	
+		ll n;
+		cin>>n;
+		cout<<(4*dp[n])%q1<<endl;
+		
+	}
+
+return 0; 
+}
+
+ 
